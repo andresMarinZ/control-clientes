@@ -13,6 +13,14 @@ import { ConfiguracionComponent } from './componentes/configuracion/configuracio
 import { NoEncontradoComponent } from './componentes/no-encontrado/no-encontrado.component';
 import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.component';
 
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule, Settings } from "@angular/fire/compat/firestore";
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { FormsModule } from "@angular/forms";
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule   } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +36,13 @@ import { PiePaginaComponent } from './componentes/pie-pagina/pie-pagina.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firestore, 'control-clientes'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
